@@ -5,7 +5,15 @@
             <title>jquery.select | Basic Example</title>
             <link rel="stylesheet" type="text/css" href="../src/jquery.select.css">
       </head>
-      <body>
+      <body style="background-color:#2C2C2E;">
+            <select name="color">
+                  <option value="#ff0000" selected="selected">Red</option>
+                  <option value="#00ff00">Green</option>
+                  <option value="#0000ff">Blue</option>
+                  <option value="#ffff00">Yellow</option>
+                  <option value="#ffffff">White</option>
+                  <option value="#000000">Black</option>
+            </select>
             <select name="color">
                   <option value="#ff0000" selected="selected">Red</option>
                   <option value="#00ff00">Green</option>
@@ -19,6 +27,7 @@
             <script type="text/javascript">
             $(function() {
                   $('select').select();
+                  $('.select:last').addClass('dark');
             });
             </script>
       </body>

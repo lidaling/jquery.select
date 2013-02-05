@@ -6,6 +6,13 @@ div.select {
     font-family: "Lucida Grande", "Lucida Sans Unicode", Tahoma, Verdana, Arial, sans-serif;
     font-size: 0;
     line-height: 0;
+    border-color: #ccc;
+    color: #333;
+}
+
+div.select.dark {
+    border-color: #000;
+    color: #ccc;
 }
 
 div.select:focus {
@@ -53,26 +60,34 @@ div.select>select {
 
 div.select>div.label {
     height: 28px;
-    padding: 0 28px 0 6px;
-    border: 1px solid #aaa;
+    padding: 0 33px 0 6px;
+    border: 1px solid inherit;
     border-radius: 3px;
-    color: #333;
-    text-shadow: 0 1px 0 #fff;
     font-size: 14px;
     line-height: 26px;
-    background-color: #eee;
     cursor: pointer;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    box-shadow: 0 1px 1px #fff inset;
+    background-color: #EEEEF0;
+}
+
+div.select.dark>div.label {
+    box-shadow: 0 1px 1px rgba(255, 255, 255, .2) inset;
+    background-color: #49494C;
 }
 
 div.select:hover>div.label, div.select:focus>div.label {
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3), 0 1px 1px #fff inset;
+}
+
+div.select.dark:hover>div.label, div.select.dark:focus>div.label {
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3), 0 1px 1px rgba(255, 255, 255, .2) inset;
 }
 
 div.select:focus>div.label {
-    border-color: #09f;
+    border-color: inherit;
 }
 
 div.select>div.label:after {
@@ -80,43 +95,15 @@ div.select>div.label:after {
     top: -1px;
     right: -1px;
     bottom: -1px;
-    width: 22px;
+    width: 27px;
     display: block;
     content: "";
-    border: 1px solid #3079ED;
     border-radius: 0 3px 3px 0;
-    background: #4C8FFD url("updown.png") no-repeat center;
+    background: transparent url("select.png") no-repeat center;
 }
 
-div.select>div.search>input {
-    padding: 5px 28px 5px 5px;
-    border-radius: 0;
-    background: #fff url("search.png") no-repeat right;
-}
-
-div.select>div.search {
-    right: 0;
-    left: 0;
-    height: 30px;
-    padding: 0;
-    border: none;
-    background-color: #fff;
-    z-index: 3;
-    display: none;
-}
-
-div.select.drop>div.search {
-    display: block;
-}
-
-div.select.drop.down>div.search {
-    top: 29px;
-    bottom: auto;
-}
-
-div.select.drop.up>div.search {
-    top: auto;
-    bottom: 29px;
+div.select.dark>div.label:after {
+    background: transparent url("select-dark.png") no-repeat center;
 }
 
 div.select>div.options {
@@ -125,10 +112,14 @@ div.select>div.options {
     height: auto;
     max-height: 196px;
     overflow: auto;
-    border: 1px solid #aaa;
-    background-color: #fff;
+    border: 1px solid inherit;
     z-index: 3;
     display: none;
+    background-color: #EEEEF0;
+}
+
+div.select.dark>div.options {
+    background-color: #49494C;
 }
 
 div.select.search>div.options {
@@ -166,21 +157,6 @@ div.select.search.drop.up>div.options {
     bottom: 58px;
 }
 
-div.select>div.options>div {
-    position: relative;
-    margin: 0;
-}
-
-div.select.mouseBlocked>div.options>div:after {
-    content: "";
-    display: block;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-}
-
 div.select.mouseBlocked>div.options a {
     pointer-events: none;
 }
@@ -191,21 +167,11 @@ div.select>div.options a {
     font-size: 13px;
     line-height: 28px;
     text-decoration: none;
-    color: #000;
-}
-
-div.select>div.options>div>div>p {
-    padding: 0 5px;
-    margin: 0;
-    font-size: 13px;
-    font-weight: bold;
-    line-height: 28px;
-    color: #999;
+    color: inherit;
 }
 
 div.select>div.options a:hover,
 div.select>div.options a.highlight {
     color: #fff;
-    text-shadow: 0 1px 0 #2F5BB7;
-    background-color: #4C8FFD;
+    background-color: rgba(0, 0, 0, 0.2);
 }
