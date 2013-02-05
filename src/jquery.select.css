@@ -24,13 +24,6 @@ div.select>* {
     top: 0;
 }
 
-div.select>select {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    -ms-appearance: none;
-    appearance: none;
-}
-
 div.select>select[disabled]+div.label {
     opacity: .5;
     cursor: default;
