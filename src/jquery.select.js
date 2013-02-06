@@ -26,7 +26,7 @@
         } else {
 
             var settings = $.extend({
-                class: 'select'
+                widgetClass: 'select'
             }, options);
 
             if(!!('ontouchstart' in window) || !!('onmsgesturechange' in window)) {
@@ -82,7 +82,7 @@
 
                 if($(this).is('select')) {
 
-                    select = $(this).wrap('<div class="' + settings.class + '"/>');
+                    select = $(this).wrap('<div class="' + settings.widgetClass + '"/>');
                     widget = select.parent();
                     label = $('<div class="label">' + select.children(':selected').text() + '</div>').appendTo(widget);
 

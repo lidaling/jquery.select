@@ -34,15 +34,13 @@ div.select>div {
     left: 0;
     right: 0;
     height: 100%;
-    z-index: 1;
 }
 
 div.select>select {
     position: relative;
     height: 30px;
-    z-index: 2;
     cursor: pointer;
-    margin: 0;
+    margin: 0 16px 0 0;
     padding: 0;
     border: none;
     border-radius: 0;
@@ -63,12 +61,12 @@ div.select>div.label {
     white-space: nowrap;
     text-overflow: ellipsis;
     box-shadow: 0 1px 1px #fff inset;
-    background-color: #EEEEF0;
+    background: #EEEEF0 url("select.png") no-repeat right center;
 }
 
 div.select.dark>div.label {
     box-shadow: 0 1px 1px rgba(255, 255, 255, .2) inset;
-    background-color: #49494C;
+    background: #49494C url("select-dark.png") no-repeat right center;
 }
 
 div.select:hover>div.label, div.select:focus>div.label {
@@ -83,22 +81,6 @@ div.select:focus>div.label {
     border-color: inherit;
 }
 
-div.select>div.label:after {
-    position: absolute;
-    top: -1px;
-    right: -1px;
-    bottom: -1px;
-    width: 27px;
-    display: block;
-    content: "";
-    border-radius: 0 3px 3px 0;
-    background: transparent url("select.png") no-repeat center;
-}
-
-div.select.dark>div.label:after {
-    background: transparent url("select-dark.png") no-repeat center;
-}
-
 div.select>div.options {
     right: 0;
     left: 0;
@@ -106,7 +88,6 @@ div.select>div.options {
     max-height: 196px;
     overflow: auto;
     border: 1px solid inherit;
-    z-index: 3;
     display: none;
     background-color: #EEEEF0;
 }
@@ -117,6 +98,10 @@ div.select.dark>div.options {
 
 div.select.search>div.options {
     max-height: 168px;
+}
+
+div.select.drop {
+    z-index: 1;
 }
 
 div.select.drop>div.options {
