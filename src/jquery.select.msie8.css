@@ -3,3 +3,13 @@
 div.select>select {
     -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
 }
+
+div.select>div.options a:hover,
+div.select>div.options a.highlight {
+    background-color: #BEBEC0;
+}
+
+div.select.dark>div.options a:hover,
+div.select.dark>div.options a.highlight {
+    background-color: #3A3A3C;
+}
