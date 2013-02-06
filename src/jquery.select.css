@@ -7,10 +7,6 @@ div.select {
     font-size: 0;
     line-height: 0;
     border-color: #ccc;
-    color: #333;
-}
-
-div.select.dark {
     color: #ccc;
 }
 
@@ -59,20 +55,11 @@ div.select>div.label {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    box-shadow: 0 1px 1px #fff inset;
-    background: #EEEEF0 url("select.png") no-repeat right center;
-}
-
-div.select.dark>div.label {
     box-shadow: 0 1px 1px rgba(255, 255, 255, .2) inset;
-    background: #49494C url("select-dark.png") no-repeat right center;
+    background: #49494C url("button.png") no-repeat right center;
 }
 
 div.select:hover>div.label, div.select:focus>div.label {
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3), 0 1px 1px #fff inset;
-}
-
-div.select.dark:hover>div.label, div.select.dark:focus>div.label {
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3), 0 1px 1px rgba(255, 255, 255, .2) inset;
 }
 
@@ -84,10 +71,6 @@ div.select>div.options {
     overflow: auto;
     border: 1px solid #000;
     display: none;
-    background-color: #EEEEF0;
-}
-
-div.select.dark>div.options {
     background-color: #49494C;
 }
 
