@@ -1,0 +1,5 @@
+@charset 'UTF-8';
+
+div.select>select {
+    margin: 0 25px 0 0;
+}

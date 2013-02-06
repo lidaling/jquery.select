@@ -29,13 +29,46 @@
                 widgetClass: 'select'
             }, options);
 
+            var create = function(o) {
+
+                var widget;
+                var select;
+                var label;
+
+                if($(o).is('select')) {
+
+                    select = $(o).wrap('<div class="' + settings.widgetClass + '"/>');
+                    widget = select.parent();
+                    label = $('<div class="label">' + select.children(':selected').text() + '</div>').appendTo(widget);
+
+                } else {
+
+                    widget = $(o);
+                    label = widget.find('.label');
+                    select = widget.find('select');
+
+                }
+
+                return {
+                    widget: widget,
+                    label: label,
+                    select: select
+                };
+
+            };
+
             if(!!('ontouchstart' in window) || !!('onmsgesturechange' in window)) {
 
                 return this.each(function() {
 
-                    var widget = $(this);
-                    var label = widget.find('.label');
-                    var select = widget.find('select');
+                    var o = create(this);
+                    var widget = o.widget;
+                    var label = o.label;
+                    var select = o.select;
+
+                    select
+                    .width(widget.width())
+                    .css('margin', 0);
 
                     var change = function() {
 
@@ -76,23 +109,10 @@
 
             return this.each(function() {
 
-                var widget;
-                var select;
-                var label;
-
-                if($(this).is('select')) {
-
-                    select = $(this).wrap('<div class="' + settings.widgetClass + '"/>');
-                    widget = select.parent();
-                    label = $('<div class="label">' + select.children(':selected').text() + '</div>').appendTo(widget);
-
-                } else {
-
-                    widget = $(this);
-                    label = widget.find('.label');
-                    select = widget.find('select');
-
-                }
+                var o = create(this);
+                var widget = o.widget;
+                var label = o.label;
+                var select = o.select;
                 
                 var container = widget.offsetParent();
                 var options = $('<div class="options"><div></div></div>').appendTo(widget);
@@ -103,7 +123,14 @@
                 var ti;
 
                 select
-                .css('z-index', 0)
+                .click(function(event) {
+                    event.preventDefault();
+                    select.blur();
+                })
+                .css({
+                    zIndex: -1,
+                    pointerEvents: 'none'
+                })
                 .attr('tabindex', -1);
 
                 widget.attr('tabindex', 0);

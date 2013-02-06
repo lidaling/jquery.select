@@ -1,6 +1,7 @@
 @charset 'UTF-8';
 
 div.select>select {
+	filter: alpha(opacity=0);
     -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
 }
 
