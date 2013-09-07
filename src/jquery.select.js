@@ -29,49 +29,65 @@
                 class: 'select'
             }, options);
 
-            if(!!('ontouchstart' in window) || !!('onmsgesturechange' in window)) {
+            if('ontouchstart' in window || 'onmsgesturechange' in window) {
 
-                return this.each(function() {
+                var boo = true;
 
-                    var widget = $(this);
-                    var label = widget.find('.label');
-                    var select = widget.find('select');
+                try {
 
-                    var change = function() {
+                    boo = window.navigator.msMaxTouchPoints > 0;
 
-                        label.text(select.find('option:selected').text());
+                } catch (error) {}
 
-                    };
+                if(boo) {
 
-                    var val = function(v) {
+                    return this.each(function() {
 
-                        if(v) {
+                        var o = create(this);
+                        var widget = o.widget;
+                        var label = o.label;
+                        var select = o.select;
 
-                            select.val(v);
-                            select.change();
+                        select
+                        .width(widget.width())
+                        .css('margin', 0);
 
-                        } else {
+                        var change = function() {
 
-                            return select.val();
+                            label.text(select.find('option:selected').text());
 
+                        };
+
+                        var val = function(v) {
+
+                            if(v) {
+
+                                select.val(v);
+                                select.change();
+
+                            } else {
+
+                                return select.val();
+
+                            }
+
+                        };
+
+                        select.change(change);
+
+                        change();
+
+                        var api = {
+                            settings: settings,
+                            change: change,
+                            val: val
                         }
 
-                    };
+                        widget.data(pluginName, api);
 
-                    select.change(change);
+                    });
 
-                    change();
-
-                    var api = {
-                        settings: settings,
-                        change: change,
-                        val: val
-                    }
-
-                    widget.data(pluginName, api);
-
-                });
-
+                }
             }
 
             return this.each(function() {
